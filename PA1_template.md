@@ -94,7 +94,7 @@ sum(is.na(dat$steps))
 ## [1] 2304
 ```
 #### 2. Devise a strategy for filling in all of the missing values in the dataset.
-First all the missing values are saved in a new data-table. After moving the missing values, all the rows with missing values are deleted and place in a new data-table (newdat).In the next step, the mean result dataset (sumdat) calculated in the previous section is merged with missing data-table. After cleaning this dataset such as replacing the old steps column with the mean column. 
+I used mean for interval as the strategy for filling in all of the missing values in the dataset.First all the missing values are saved in a new data-table. After moving the missing values, all the rows with missing values are deleted and place in a new data-table (newdat).In the next step, the mean result dataset (sumdat) calculated in the previous section is merged with missing data-table. After cleaning this dataset such as replacing the old steps column with the mean column. 
 
 
 ```r
@@ -144,7 +144,7 @@ median(sumdat$steps)
 ```
 ## [1] 10762
 ```
-The mean and median values for the new dataset (exc;uding missing values) are different from the first section where the dataset includes missing values. However the difference between medians of the old and the new dataset is very small. The impact of imputing missing data is more visible in the gap between mean and median of the new data. In the new dataset median and mean are almost the same. This can be seen by comparing the first and second histogram. In the last histogram the red and green dashed lines are overlapped.
+The mean and median values for the new dataset (exc;uding missing values) are differentfrom the first section where the dataset includes missing values. However the difference between medians of the old and the new dataset is very small. The impact of imputing missing data is more visible in the gap between mean and median of the new data. In the new dataset median and mean are almost the same. This can be seen by comparing the first and second histogram. In the last histogram the red and green dashed lines are overlapped.
 ## Are there differences in activity patterns between weekdays and weekends?
 
 #### 1. Create a new factor variable in the dataset with two levels - "weekday" and "weekend" indicating whether a given date is a weekday or weekend day.  
