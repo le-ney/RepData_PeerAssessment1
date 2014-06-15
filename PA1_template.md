@@ -98,7 +98,7 @@ newdat <- rbind (newdat, misVals)
 #### 4. Make a histogram of the total number of steps taken each day
 
 ```r
-sumdat <- aggregate(newdat$steps, by = list(dat$date), sum, na.rm=TRUE)
+sumdat <- aggregate(newdat$steps, by = list(newdat$date), sum, na.rm=TRUE)
 colnames(sumdat) <- c("Day","steps")
 with(sumdat, hist(steps, col="green3",main="Histogram of the total number of steps taken each day", xlab="Number of Steps", ylab="Count"))
 ```
@@ -122,7 +122,7 @@ median(sumdat$steps)
 ```
 
 ```
-## [1] 11015
+## [1] 10762
 ```
 ## Are there differences in activity patterns between weekdays and weekends?
 
