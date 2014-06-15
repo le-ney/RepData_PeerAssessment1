@@ -315,12 +315,13 @@ ggplot(sumdat, aes(x=steps)) + geom_histogram(colour=&quot;black&quot;, fill=&qu
 <pre><code>## [1] 10762
 </code></pre>
 
-<p>The mean and median values for the new dataset (exc;uding missing values) are different from the first section where the dataset includes missing values. However the difference between medians of the old and the new dataset is very small. The impact of imputing missing data is more visible in the gap between mean and median of the new data. In the new dataset median and mean are almost the same. This can be seen by comparing the first and second histogram. In the last histogram the red and green dashed lines are overlapped.
-Do these values differ from the estimates from the first part of the assignment? What is the impact of imputing missing data on the estimates of the total daily number of steps?</p>
+<p>The mean and median values for the new dataset (exc;uding missing values) are different from the first section where the dataset includes missing values. However the difference between medians of the old and the new dataset is very small. The impact of imputing missing data is more visible in the gap between mean and median of the new data. In the new dataset median and mean are almost the same. This can be seen by comparing the first and second histogram. In the last histogram the red and green dashed lines are overlapped.</p>
 
 <h2>Are there differences in activity patterns between weekdays and weekends?</h2>
 
 <h4>1. Create a new factor variable in the dataset with two levels - &ldquo;weekday&rdquo; and &ldquo;weekend&rdquo; indicating whether a given date is a weekday or weekend day.</h4>
+
+<p>Using weekdays function created a new field(column) for week day names. Then group the two categories weekday and weekend and then factored by this column.</p>
 
 <pre><code class="r">newdat$daytype &lt;- weekdays(newdat$date)
 newdat$daytype[newdat$daytype==&quot;Saturday&quot; | newdat$daytype==&quot;Sunday&quot;] &lt;- &quot;weekend&quot;
@@ -329,6 +330,8 @@ newdat$daytype &lt;- as.factor(newdat$daytype)
 </code></pre>
 
 <h4>2. Make a panel plot containing a time series plot</h4>
+
+<p>In order to make this plot, first the number of the steps had to aggregated and group by type of the week day (weekend or weekdays) and then by value of interval. Lattic library is used for this plot to imitate the example in the assignment&#39;s instruction.</p>
 
 <pre><code class="r">sumdat &lt;- aggregate(newdat$steps, by = list(newdat$daytype, newdat$interval), mean, na.rm=TRUE)
 colnames(sumdat) &lt;- c(&quot;daytype&quot;, &quot;interval&quot;, &quot;mean&quot;)

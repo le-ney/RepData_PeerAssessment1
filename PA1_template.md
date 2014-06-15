@@ -145,10 +145,10 @@ median(sumdat$steps)
 ## [1] 10762
 ```
 The mean and median values for the new dataset (exc;uding missing values) are different from the first section where the dataset includes missing values. However the difference between medians of the old and the new dataset is very small. The impact of imputing missing data is more visible in the gap between mean and median of the new data. In the new dataset median and mean are almost the same. This can be seen by comparing the first and second histogram. In the last histogram the red and green dashed lines are overlapped.
-Do these values differ from the estimates from the first part of the assignment? What is the impact of imputing missing data on the estimates of the total daily number of steps?
 ## Are there differences in activity patterns between weekdays and weekends?
 
-#### 1. Create a new factor variable in the dataset with two levels - "weekday" and "weekend" indicating whether a given date is a weekday or weekend day.
+#### 1. Create a new factor variable in the dataset with two levels - "weekday" and "weekend" indicating whether a given date is a weekday or weekend day.  
+Using weekdays function created a new field(column) for week day names. Then group the two categories weekday and weekend and then factored by this column.
 
 
 ```r
@@ -157,7 +157,8 @@ newdat$daytype[newdat$daytype=="Saturday" | newdat$daytype=="Sunday"] <- "weeken
 newdat$daytype[newdat$daytype !="weekend"] <- "weekday"
 newdat$daytype <- as.factor(newdat$daytype)
 ```
-#### 2. Make a panel plot containing a time series plot 
+#### 2. Make a panel plot containing a time series plot  
+In order to make this plot, first the number of the steps had to aggregated and group by type of the week day (weekend or weekdays) and then by value of interval. Lattic library is used for this plot to imitate the example in the assignment's instruction.
 
 ```r
 sumdat <- aggregate(newdat$steps, by = list(newdat$daytype, newdat$interval), mean, na.rm=TRUE)
