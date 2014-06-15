@@ -55,7 +55,7 @@ median(sumdat$Steps)
 ```r
 sumdat <- aggregate(dat$steps, by = list(dat$interval), mean, na.rm=TRUE)
 colnames(sumdat) <- c("Interval","Steps")
-plot(sumdat$Steps, type = "l")
+plot(sumdat$Interval,sumdat$Steps, xlab="Interval", ylab="Total number of steps", type = "l")
 ```
 
 ![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5.png) 
